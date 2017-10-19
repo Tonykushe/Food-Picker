@@ -1,4 +1,6 @@
 from django.db import models
+from django.db.models.signals import pre_save, post_save
+from restaurants.utils import unique_slug_generator
 
 # Create your models here.
 class Restaurant(models.Model):
@@ -15,3 +17,17 @@ class Restaurant(models.Model):
 	@property
 	def title(self):
 		return self.name
+
+def rest_pre_save_reciever(sender, instance, *args, **kwargs):
+	if not instance.slug:
+		instance.slug = unique_slug_generator(instance)
+
+# def rest_post_save_reciever(sender, instance,created, *args, **kwargs):
+# 	print('saved')
+# 	print(instance.timestamp)
+# 	if not instance.slug:
+# 		instance.slug = unique_slug_generator(instance)
+# 		instance.save()
+
+pre_save.connect(rest_pre_save_reciever, sender=Restaurant)
+# post_save.connect(rest_post_save_reciever, sender=Restaurant)
