@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-	<h3>{{object.title}} <small>{{object.category}}</small> </h3>
-	<p>{{object.location}} </p>
-	<p>{{object.timestamp}}</p>
+{% extends 'restaurants/base.html' %}
+	{% block title%} Restaurants | {{ block.super }} {% endblock %}
+	{% block body %}
+		<div class="container">
+			<h3>{{object.title}} <small>{{object.category}}</small> </h3>
+			<p>{{object.location}} </p>
+			<p>{{object.timestamp}}</p>
+		</div>
+	{% endblock %}
 	
 
-</body>
-</html>

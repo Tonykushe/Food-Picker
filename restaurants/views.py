@@ -3,8 +3,17 @@ from django.shortcuts import render, get_object_or_404
 from django.views import View
 from django.views.generic import TemplateView, ListView, DetailView
 from .models import *
+from .forms import *
 
 # Create your views here.
+
+def restaurant_createview(request):
+	template_name = 'restaurants/form.html'
+	context = {}
+	return render(request, template_name, context)
+
+
+
 # def restaurant_list(request):
 # 	template_name = 'restaurants/restaurants_list.html'
 # 	queryset = Restaurant.objects.all()

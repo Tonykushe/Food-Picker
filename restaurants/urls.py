@@ -4,6 +4,7 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
 	url(r'^restaurants/$', RestaurantListView.as_view()),
+	url(r'^restaurants/create/$', restaurant_createview),
     url(r'^restaurants/(?P<slug>[\w-]+)/$', RestaurantDetailView.as_view()),
 
     #url(r'^restaurants/(?P<slug>\w+)/$', RestaurantListView.as_view()),
