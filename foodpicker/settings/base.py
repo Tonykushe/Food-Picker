@@ -51,6 +51,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'foodpicker.urls'
+LOGIN_URL = '/login/'
 
 TEMPLATES = [
     {

@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
 from django.views import View
@@ -44,10 +46,15 @@ class RestaurantDetailView(DetailView):
 	queryset = Restaurant.objects.all()
 
 
-class RestaurantCreateView(CreateView):
+class RestaurantCreateView(LoginRequiredMixin, CreateView):
 	form_class = RestaurantModelForm
 	template_name = 'restaurants/form.html'
 	success_url = '/restaurants'
+
+	def form_valid(self, form):
+		instance = form.save(commit=False)
+		instance.owner = self.request.user
+		return super(RestaurantCreateView, self).form_valid(form)
 
 
 	
