@@ -16,8 +16,16 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from restaurants import views
+from django.views.generic import TemplateView
+from django.contrib.auth.views import LoginView
+
 urlpatterns = [
+
     url(r'^admin/', admin.site.urls),
-    url(r'^', include('restaurants.urls')),
-    # url(r'^$', views.home),
+    url(r'^login/$', LoginView.as_view(), name='login'),
+    url(r'^restaurants/', include('restaurants.urls', namespace='restaurants')),
+    url(r'^items/', include('menus.urls', namespace='menus')),
+
+    #url(r'^', include('menus.urls')),
+    
 ]

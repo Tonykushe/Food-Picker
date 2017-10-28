@@ -3,7 +3,7 @@ from django.db import models
 from restaurants.models import *
 
 # Create your models here.
-class MenuItem(models.Model):
+class Item(models.Model):
 	# associations
 	user 		= models.ForeignKey(settings.AUTH_USER_MODEL)
 	restaurant  = models.ForeignKey(Restaurant)
