@@ -5,7 +5,7 @@
 			<h3>Menu Items</h3>
 			<ul>
 				{% for obj in object_list %}
-					<li>  <a href="#"> {{ obj.name }}</a> <br/>
+					<li>  <a href="{{ obj.get_absolute_url }}"> {{ obj.name }}</a> <br/>
 						{% if obj.contents %}
 						Contents
 						<ul>
@@ -14,6 +14,7 @@
 							{% endfor %}
 						</ul>
 						{% endif %}
+						
 						{% if obj.excludes %}
 						Excludes
 						<ul>
